@@ -1,0 +1,28 @@
+
+<h1>DAZAIFU: pray for site</h1>
+<p> Hello, <%= User.find_by_id(session[:user_id]).userid %> </p>
+
+<%= link_to 'New Message', new_message_path %>
+<%= paginate @messages %>
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Message</th>
+    <th>User</th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.created_at %></td>
+    <td><%= message.message %></td>
+    <td><%= message.userid %></td>
+    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Edit', edit_message_path(message) %></td>
+    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
