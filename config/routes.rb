@@ -1,11 +1,17 @@
 Dazaifu::Application.routes.draw do
-  resources :messages
+  get "pages/home"
 
-  resources :users
-  get "admin/login"
-  get "admin/logout"
+  get "pages/contact"
+
+  resources :messages
+  resources :users  
+
   get "admin/index"
-  post "admin/login"
+
+  match "admin/login" 
+  match "admin/logout"
+
+  root :to => "pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
